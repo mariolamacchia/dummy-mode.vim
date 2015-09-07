@@ -4,14 +4,14 @@ var nmaps = {
     '<S-Right>': 'v',
     '<S-Up>': 'ht',
     '<S-Down>': 'vjh',
-    '<C-v>': '"+p',
+    '<C-v>': '"+gP',
     '<C-s>': ':w<CR>',
     '<C-S-s>': ':wa<CR>',
     '<C-z>': 'u',
     '<C-y>': '<C-r>'
 };
 var imaps = {
-    '<C-v>': '<ESC>"+p',
+    '<C-v>': '<ESC>"+gP',
     '<C-s>': '<ESC>:w<CR>',
     '<C-S-s>': '<ESC>:wa<CR>',
     '<ESC>': '<Nop>',
@@ -28,7 +28,7 @@ var vmaps = {
     '<{{arrow}}>': '<ESC><{{arrow}}>i',
     '<{{char}}>': 'c<{{char}}>',
     '<C-c>': '"+ygv',
-    '<C-v>': 'd"+p',
+    '<C-v>': 'd"+gP',
     '<C-s>': '<ESC>:w<CR>',
     '<C-S-s>': '<ESC>:wa<CR>',
     '<C-z>': '<ESC>ugv',
