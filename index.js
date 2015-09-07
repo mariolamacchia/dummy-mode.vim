@@ -9,7 +9,8 @@ var nmaps = {
     '<C-S-s>': ':wa<CR>a',
     '<C-z>': 'ua',
     '<C-y>': '<C-r>a',
-    '<Backspace>': 's'
+    '<Backspace>': 's',
+    '<C-a>': 'ggvG$'
 };
 var imaps = {
     '<C-v>': '<ESC>"+gPa',
@@ -22,7 +23,8 @@ var imaps = {
     '<S-Down>': '<ESC>lvjh',
     '<S-ESC>': '<ESC>:call DummyMode()<CR>',
     '<C-z>': '<ESC>u',
-    '<C-y>': '<ESC><C-r>'
+    '<C-y>': '<ESC><C-r>',
+    '<C-a>': '<ESC>ggvG$'
 };
 var vmaps = {
     '<S-{{arrow}}>': '<{{arrow}}>',
@@ -36,6 +38,9 @@ var vmaps = {
     '<C-z>': '<ESC>ugv',
     '<C-y>': '<ESC><C-r>gv',
     '<Backspace>': 'c',
+    '<C-a>': '<ESC>ggvG$',
+    '<TAB>': '>gv',
+    '<S-TAB>': '<gv'
 };
 
 
