@@ -8,7 +8,8 @@ var nmaps = {
     '<C-s>': ':w<CR>',
     '<C-S-s>': ':wa<CR>',
     '<C-z>': 'u',
-    '<C-y>': '<C-r>'
+    '<C-y>': '<C-r>',
+    '<Backspace>': 's'
 };
 var imaps = {
     '<C-v>': '<ESC>"+gP',
@@ -32,7 +33,8 @@ var vmaps = {
     '<C-s>': '<ESC>:w<CR>',
     '<C-S-s>': '<ESC>:wa<CR>',
     '<C-z>': '<ESC>ugv',
-    '<C-y>': '<ESC><C-r>gv'
+    '<C-y>': '<ESC><C-r>gv',
+    '<Backspace>': 'c',
 };
 
 
