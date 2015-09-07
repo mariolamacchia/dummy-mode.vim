@@ -10,7 +10,8 @@ var nmaps = {
     '<C-z>': 'ua',
     '<C-y>': '<C-r>a',
     '<Backspace>': 's',
-    '<C-a>': 'ggvG$'
+    '<C-a>': 'ggvG$',
+    '<S-ESC>': ':mapclear<CR>:source $MYVIMRC<CR>'
 };
 var imaps = {
     '<C-v>': '<ESC>"+gPa',
@@ -24,7 +25,8 @@ var imaps = {
     '<S-ESC>': '<ESC>:call DummyMode()<CR>',
     '<C-z>': '<ESC>u',
     '<C-y>': '<ESC><C-r>',
-    '<C-a>': '<ESC>ggvG$'
+    '<C-a>': '<ESC>ggvG$',
+    '<S-ESC>': '<ESC>:mapclear<CR>:source $MYVIMRC<CR>'
 };
 var vmaps = {
     '<S-{{arrow}}>': '<{{arrow}}>',
@@ -40,7 +42,8 @@ var vmaps = {
     '<Backspace>': 'c',
     '<C-a>': '<ESC>ggvG$',
     '<TAB>': '>gv',
-    '<S-TAB>': '<gv'
+    '<S-TAB>': '<gv',
+    '<S-ESC>': '<ESC>:mapclear<CR>:source $MYVIMRC<CR>'
 };
 
 
@@ -94,13 +97,14 @@ function parseMaps(map) {
 
 [
     'let g:dummymode=0',
-    'function DummyMode()',
+    'function! DummyMode()',
     '  if g:dummymode',
     '    let g:dummymode=0',
-].concat(parseMaps()).concat([
+    '    source $HOME/.vimrc',
     '  else',
     '    let g:dummymode=1',
-]).concat(parseMaps(1)).concat([
+    '    mapclear',
+].concat(parseMaps(1)).concat([
     '  endif',
     'endfunction',
     'nmap <S-ESC> :call DummyMode()<CR>'
