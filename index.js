@@ -1,6 +1,21 @@
+var maps = {
+    '<C-v>': '"+p',
+    '<C-s>': ':w<CR>',
+    '<C-S-s>': ':wa<CR>'
+};
+var nmaps = {
+    '<{{char}}>': 'a<{{char}}>',
+    '<S-Left>': 'hvkl',
+    '<S-Right>': 'v',
+    '<S-Up>': 'ht',
+    '<S-Down>': 'vjh',
+};
 var imaps = {
     '<ESC>': '<Nop>',
-    '<S-{{arrow}}>': '<ESC>v<{{arrow}}>',
+    '<S-Left>': '<ESC>v',
+    '<S-Right>': '<ESC>lv',
+    '<S-Up>': '<ESC>vlk',
+    '<S-Down>': '<ESC>lvjh',
     '<S-ESC>': '<ESC>:call DummyMode()<CR>',
 };
 var vmaps = {
@@ -8,7 +23,6 @@ var vmaps = {
     '<{{arrow}}>': '<ESC><{{arrow}}>i',
     '<{{char}}>': 'c<{{char}}>',
     '<C-c>': '"+ygv',
-    '<C-v>': '"+p',
 };
 
 
@@ -48,6 +62,12 @@ function parseMap(mode, map, key, value) {
 
 function parseMaps(map) {
     var strings = [];
+    for (var key in maps) {
+        strings = strings.concat(parseMap('', map, key, maps[key]));
+    }
+    for (var key in nmaps) {
+        strings = strings.concat(parseMap('n', map, key, nmaps[key]));
+    }
     for (var key in imaps) {
         strings = strings.concat(parseMap('i', map, key, imaps[key]));
     }
