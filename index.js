@@ -1,28 +1,38 @@
-var maps = {
-    '<C-v>': '"+p',
-    '<C-s>': ':w<CR>',
-    '<C-S-s>': ':wa<CR>'
-};
 var nmaps = {
     '<{{char}}>': 'a<{{char}}>',
     '<S-Left>': 'hvkl',
     '<S-Right>': 'v',
     '<S-Up>': 'ht',
     '<S-Down>': 'vjh',
+    '<C-v>': '"+p',
+    '<C-s>': ':w<CR>',
+    '<C-S-s>': ':wa<CR>',
+    '<C-z>': 'u',
+    '<C-y>': '<C-r>'
 };
 var imaps = {
+    '<C-v>': '<ESC>"+p',
+    '<C-s>': '<ESC>:w<CR>',
+    '<C-S-s>': '<ESC>:wa<CR>',
     '<ESC>': '<Nop>',
     '<S-Left>': '<ESC>v',
     '<S-Right>': '<ESC>lv',
     '<S-Up>': '<ESC>vlk',
     '<S-Down>': '<ESC>lvjh',
     '<S-ESC>': '<ESC>:call DummyMode()<CR>',
+    '<C-z>': '<ESC>u',
+    '<C-y>': '<ESC><C-r>'
 };
 var vmaps = {
     '<S-{{arrow}}>': '<{{arrow}}>',
     '<{{arrow}}>': '<ESC><{{arrow}}>i',
     '<{{char}}>': 'c<{{char}}>',
     '<C-c>': '"+ygv',
+    '<C-v>': 'd"+p',
+    '<C-s>': '<ESC>:w<CR>',
+    '<C-S-s>': '<ESC>:wa<CR>',
+    '<C-z>': '<ESC>ugv',
+    '<C-y>': '<ESC><C-r>gv'
 };
 
 
@@ -37,7 +47,7 @@ function parseMap(mode, map, key, value) {
             });
         });
     } else if (match && match[1] === 'char') {
-        for (var c = 0; c < 256; c++) {
+        for (var c = 32; c <= 254; c++) {
             array.push({
                 key: key.replace(/{{char}}/g, 'Char-' + c),
                 value: value.replace(/{{char}}/g, 'Char-' + c)
@@ -62,9 +72,6 @@ function parseMap(mode, map, key, value) {
 
 function parseMaps(map) {
     var strings = [];
-    for (var key in maps) {
-        strings = strings.concat(parseMap('', map, key, maps[key]));
-    }
     for (var key in nmaps) {
         strings = strings.concat(parseMap('n', map, key, nmaps[key]));
     }
