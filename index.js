@@ -29,6 +29,7 @@ var vmaps = {
     '<{{arrow}}>': '<ESC><{{arrow}}>i',
     '<{{char}}>': 'c<{{char}}>',
     '<C-c>': '"+ygv',
+    '<C-x>': '"+c',
     '<C-v>': 'd"+gP',
     '<C-s>': '<ESC>:w<CR>',
     '<C-S-s>': '<ESC>:wa<CR>',
